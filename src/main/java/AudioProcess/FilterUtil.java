@@ -28,11 +28,11 @@ public class FilterUtil {
      * @param sampleRate: the sampling rate of signal
      * @return the filtered data
      */
-    public static short[] bandPass(short[] data, int order, int fmin, int fmax, int sampleRate) {
+    public static short[] BandPass(short[] data, int order, int fmin, int fmax, int sampleRate) {
         IirFilterCoefficients iirFilterCoefficients;
         iirFilterCoefficients = IirFilterDesignExstrom.design(FilterPassType.bandpass, order,
                 (double) fmin / sampleRate, (double) fmax / sampleRate);
-        return filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
+        return Filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
     }
 
     /**
@@ -44,11 +44,11 @@ public class FilterUtil {
      * @param sampleRate: the sampling rate of signal
      * @return the filtered data
      */
-    public static short[] highPass(short[] data, int order, int fmin, int sampleRate) {
+    public static short[] HighPass(short[] data, int order, int fmin, int sampleRate) {
         IirFilterCoefficients iirFilterCoefficients;
         iirFilterCoefficients = IirFilterDesignExstrom.design(FilterPassType.highpass, order,
                 (double) fmin / sampleRate, (double) fmin / sampleRate); // v1:Ignored for lowpass/highpass
-        return filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
+        return Filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
     }
 
     /**
@@ -60,11 +60,11 @@ public class FilterUtil {
      * @param sampleRate: the sampling rate of signal
      * @return the filtered data
      */
-    public static short[] lowPass(short[] data, int order, int fmax, int sampleRate) {
+    public static short[] LowPass(short[] data, int order, int fmax, int sampleRate) {
         IirFilterCoefficients iirFilterCoefficients;
         iirFilterCoefficients = IirFilterDesignExstrom.design(FilterPassType.highpass, order,
                 (double) fmax / sampleRate, (double) fmax / sampleRate); // v1:Ignored for lowpass/highpass
-        return filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
+        return Filter(data, iirFilterCoefficients.a, iirFilterCoefficients.b);
     }
 
     /**
@@ -75,7 +75,7 @@ public class FilterUtil {
      * @param b     the transfer function coefficients-b
      * @return the filtered data
      */
-    private static short[] filter(short[] data, double[] a, double[] b) {
+    private static short[] Filter(short[] data, double[] a, double[] b) {
         in = new double[b.length];
         out = new double[a.length - 1];
         outData = new short[data.length];

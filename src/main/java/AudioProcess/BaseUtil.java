@@ -17,7 +17,7 @@ public class BaseUtil {
      * @param threshold: peaks must be above the threshold
      * @return the index of the peak(if none, return -1)
      */
-    public static int findOnePeak(short[] data, double threshold) {
+    public static int FindOnePeak(short[] data, double threshold) {
         int peak = -1;
         int maxMag = -1;
         for (int i = 0; i < data.length; ++i) {
@@ -41,7 +41,7 @@ public class BaseUtil {
      * @param interval:  the min interval between two peaks
      * @return the index of peaks
      */
-    public static ArrayList<Integer> findPeaks(short[] data, double threshold, int interval) {
+    public static ArrayList<Integer> FindPeaks(short[] data, double threshold, int interval) {
         /* step 1 */
         ArrayList<Integer> outPeaks = new ArrayList<>();
         ArrayList<Integer> zeros = new ArrayList<>();
@@ -159,7 +159,7 @@ public class BaseUtil {
      * @param target: the target sequence, such as chirp
      * @return the correlation between them
      */
-    public static long[] correlate(short[] origin, short[] target) {
+    public static long[] Correlate(short[] origin, short[] target) {
         if (origin.length < target.length)
             return null;
         int cofLen = origin.length - target.length + 1;
@@ -181,7 +181,7 @@ public class BaseUtil {
      * @param size:   the size of signal
      * @return the signal with window
      */
-    public static double[] hanningWindow(short[] signal, int pos, int size) {
+    public static double[] HanningWindow(short[] signal, int pos, int size) {
         double[] res = new double[signal.length];
         for (int i = pos; i < pos + size; i++) {
             int j = i - pos;
@@ -198,7 +198,7 @@ public class BaseUtil {
      * @param data: an array containing unfiltered input data
      * @return a doube array containing the filtered data
      */
-    public static double[] hammingWindow(short[] data, int size) {
+    public static double[] HammingWindow(short[] data, int size) {
         double[] res = new double[data.length];
         /* create window function */
         double[] window = new double[size];
@@ -220,8 +220,8 @@ public class BaseUtil {
         System.out.println(peaks);*/
         short[] origin = {1, 2, 3};
         short[] target = {1, 2, 3};
-        long[] out = correlate(origin, target);
-        System.out.println(out);
+        long[] out = Correlate(origin, target);
+        System.out.println(out.length);
 
         System.out.println("EOT in BaseUtil");
     }

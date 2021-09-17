@@ -16,12 +16,12 @@ public class FrequencyUtil {
      * @param sampleRate: the sampling rate(Hz) of sampleData
      * @return an approximation of the dominant frequency in sampleData
      */
-    public double extractFrequency(short[] sampleData, int sampleRate) {
+    public double ExtractFrequency(short[] sampleData, int sampleRate) {
         /* sampleData + zero padding */
         int fftLen = sampleData.length + 20 * sampleData.length;
         DoubleFFT_1D fft = new DoubleFFT_1D(fftLen);
         double[] a = new double[fftLen]; // 不应该是*2？
-        System.arraycopy(BaseUtil.hammingWindow(sampleData, sampleData.length), 0,
+        System.arraycopy(BaseUtil.HammingWindow(sampleData, sampleData.length), 0,
                 a, 0, sampleData.length);
         fft.realForward(a);
 

@@ -13,7 +13,7 @@ public class SignalUtil {
      * @param T:          the duration of signal
      * @return the chirp signal
      */
-    public static short[] upChirp(int sampleRate, int fmin, int fmax, double T) {
+    public static short[] UpChirp(int sampleRate, int fmin, int fmax, double T) {
         int len = (int) (T * sampleRate);
         double[] t = new double[len];
         short[] chirp = new short[len];
